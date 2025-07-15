@@ -33,5 +33,5 @@ module.exports = withModuleFederationPlugin({
     ...sharedMappings.getDescriptors(), // <- importante
   },
 
-  sharedMappings: sharedMappings, // <- importante
+  sharedMappings: [sharedMappings.getPlugin()], // <- importante
 });

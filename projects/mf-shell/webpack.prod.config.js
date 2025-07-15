@@ -5,12 +5,11 @@ const {
 } = require("@angular-architects/module-federation/webpack");
 const path = require("path");
 
-// 🔁 Inicializa SharedMappings para commons-lib
+// 🔁 Setup SharedMappings
 const sharedMappings = new SharedMappings();
-sharedMappings.register(
-  path.join(__dirname, "../../tsconfig.json"), // Asegúrate de que esta ruta sea correcta
-  ["@commons-lib"]
-);
+sharedMappings.register(path.resolve(__dirname, "../../tsconfig.json"), [
+  "@commons-lib",
+]);
 
 module.exports = withModuleFederationPlugin({
   remotes: {
@@ -18,15 +17,13 @@ module.exports = withModuleFederationPlugin({
       "mfShopping@https://mfshopping.azurestaticapps.net/remoteEntry.js",
     mfPayment: "mfPayment@https://mfpayment.azurestaticapps.net/remoteEntry.js",
   },
-
   shared: {
     ...shareAll({
       singleton: true,
       strictVersion: true,
       requiredVersion: "auto",
     }),
-    ...sharedMappings.getDescriptors(), // ← Necesario
+    ...sharedMappings.getDescriptors(),
   },
-
-  sharedMappings: sharedMappings.getPlugin(), // ← Necesario
+  sharedMappings: [sharedMappings.getPlugin()], // ✅ Este arreglo era necesario
 });
