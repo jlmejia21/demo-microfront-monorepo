@@ -17,8 +17,6 @@ module.exports = withModuleFederationPlugin({
 
   filename: "remoteEntry.js", // Necesario para exponer la federación
 
-  publicHost: "https://mfpayment.azurestaticapps.net/remoteEntry.js", // URL de producción
-
   exposes: {
     "./PaymentComponent":
       "./projects/mf-payment/src/app/payment/payment.component.ts",
