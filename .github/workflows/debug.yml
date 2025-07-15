@@ -7,4 +7,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "TOKEN LENGTH: ${{ secrets.SWA_SHELL_TOKEN }}" | wc -c
+      - name: Print length of SWA_SHELL_TOKEN
+        env:
+          TOKEN: ${{ secrets.SWA_SHELL_TOKEN }}
+        run: echo "$TOKEN" | wc -c
