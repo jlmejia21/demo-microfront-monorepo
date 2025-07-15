@@ -1,16 +1,16 @@
-name: Deploy shell to Azure Static Web Apps
+name: Deploy mf-shell to Azure Static Web Apps
 
 on:
   push:
     paths:
-      - "projects/shell/**"
+      - "projects/mf-shell/**"
     branches:
       - main
 
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-    name: Build and Deploy Shell
+    name: Build and Deploy mf-shell
     steps:
       - uses: actions/checkout@v3
 
@@ -19,11 +19,10 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Build shell
+      - name: Build mf-shell
         run: |
-          cd shell
           npm ci
-          npm run build -- --configuration production
+          npm run build mf-shell
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
@@ -31,5 +30,5 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.SWA_SHELL_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "projects/shell"
-          output_location: "dist/projects/shell"
+          app_location: "projects/mf-shell"
+          output_location: "dist/projects/mf-shell"
