@@ -3,7 +3,7 @@ name: Deploy mfShopping to Azure Static Web Apps
 on:
   push:
     paths:
-      - "mf-shopping/**"
+      - "projects/mf-shopping/**"
     branches:
       - main
 
@@ -31,5 +31,5 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.SWA_MFSHOPPING_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "mf-shopping"
-          output_location: "dist/mf-shopping"
+          app_location: "projects/mf-shopping"
+          output_location: "dist/projects/mf-shopping"

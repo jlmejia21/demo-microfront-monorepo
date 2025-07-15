@@ -3,7 +3,7 @@ name: Deploy shell to Azure Static Web Apps
 on:
   push:
     paths:
-      - "shell/**"
+      - "projects/shell/**"
     branches:
       - main
 
@@ -31,5 +31,5 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.SWA_SHELL_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "shell"
-          output_location: "dist/shell"
+          app_location: "projects/shell"
+          output_location: "dist/projects/shell"

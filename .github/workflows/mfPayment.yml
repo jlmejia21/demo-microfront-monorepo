@@ -3,7 +3,7 @@ name: Deploy mfPayment to Azure Static Web Apps
 on:
   push:
     paths:
-      - "mf-payment/**"
+      - "projects/mf-payment/**"
     branches:
       - main
 
@@ -31,5 +31,5 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.SWA_MFPAYMENT_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "mf-payment"
-          output_location: "dist/mf-payment"
+          app_location: "projects/mf-payment"
+          output_location: "dist/projects/mf-payment"
