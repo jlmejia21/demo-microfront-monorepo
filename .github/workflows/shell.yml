@@ -1,0 +1,35 @@
+name: Deploy shell to Azure Static Web Apps
+
+on:
+  push:
+    paths:
+      - "shell/**"
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy Shell
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Build shell
+        run: |
+          cd shell
+          npm ci
+          npm run build -- --configuration production
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.SWA_SHELL_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "shell"
+          output_location: "dist/shell"

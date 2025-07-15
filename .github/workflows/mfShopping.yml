@@ -1,0 +1,35 @@
+name: Deploy mfShopping to Azure Static Web Apps
+
+on:
+  push:
+    paths:
+      - "mf-shopping/**"
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy mfShopping
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Build mfShopping
+        run: |
+          cd mf-shopping
+          npm ci
+          npm run build -- --configuration production
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.SWA_MFSHOPPING_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: "mf-shopping"
+          output_location: "dist/mf-shopping"
