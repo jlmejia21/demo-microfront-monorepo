@@ -40,7 +40,7 @@
               "fileReplacements": [
                 {
                   "replace": "projects/mf-shell/src/environments/environment.ts",
-                  "with": "projects/mf-shell/src/environments/environment.prod.ts"
+                  "with": "projects/mf-shell/src/environments/environment.prd.ts"
                 }
               ],
               "budgets": [
