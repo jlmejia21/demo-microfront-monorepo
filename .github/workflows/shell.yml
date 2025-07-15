@@ -33,3 +33,4 @@ jobs:
           action: "upload"
           app_location: "projects/mf-shell"
           output_location: "dist/mf-shell"
+          skip_app_build: true
