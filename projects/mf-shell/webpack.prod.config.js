@@ -14,8 +14,9 @@ sharedMappings.register(path.resolve(__dirname, "../../tsconfig.json"), [
 module.exports = withModuleFederationPlugin({
   remotes: {
     mfShopping:
-      "mfShopping@https://mfshopping.azurestaticapps.net/remoteEntry.js",
-    mfPayment: "mfPayment@https://mfpayment.azurestaticapps.net/remoteEntry.js",
+      "mfShopping@https://gentle-glacier-0c894111e.2.azurestaticapps.net/remoteEntry.js",
+    mfPayment:
+      "mfPayment@https://happy-mushroom-0500dd21e.2.azurestaticapps.net/remoteEntry.js",
   },
   shared: {
     ...shareAll({
