@@ -32,5 +32,5 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "projects/mf-shell"
-          output_location: "dist/mf-shell"
-          skip_app_build: true
+          # output_location: "dist/mf-shell"
+          app_artifact_location: "dist/mf-shell"
