@@ -33,7 +33,6 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.SWA_SHELL_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload" # ✅ ESTA LÍNEA ES CLAVE
-          app_location: "projects/mf-shell"
-          app_artifact_location: "dist/mf-shell"
+          action: "upload"
+          app_location: "dist/mf-shell"
           skip_app_build: true
