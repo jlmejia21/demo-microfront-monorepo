@@ -17,8 +17,6 @@ module.exports = withModuleFederationPlugin({
 
   filename: "remoteEntry.js",
 
-  publicHost: "https://mfshopping.azurestaticapps.net/remoteEntry.js",
-
   exposes: {
     "./ProductsComponent":
       "./projects/mf-shopping/src/app/products/products.component.ts",
